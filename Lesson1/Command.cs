@@ -11,30 +11,30 @@ namespace Lesson1
             {
                 return Data.all[id];
             }
-            catch(Exception e)
+            catch (Exception e)
             {
                 return e.Message;
             }
         }
-        public static string AddElement(Chore chore)
+        public static string AddElement(Product product)
         {
             try
             {
-                Data.all.Add(Data.all.Count + 1, new Chore(chore.Name, chore.Desc, chore.IsCompleted));
-                return $"element with name {chore.Name} has been added under id {Data.all.Count}.";
+                Data.all.Add(Data.all.Count + 1, new Product(product.Name, product.Price, product.Stock));
+                return $"element with name {product.Name} has been added under id {Data.all.Count + 1}.";
             }
             catch (Exception e)
             {
                 return e.Message;
             }
         }
-        public static string PatchElement(int id, Chore chore)
+        public static string PatchElement(int id, Product Product)
         {
             try
             {
                 if (Data.all.ContainsKey(id))
                 {
-                    Data.all[id] = chore;
+                    Data.all[id] = Product;
                     return $"element with id {id} has been patched.";
                 }
                 else
