@@ -11,8 +11,9 @@ app.UseSwaggerUI();
 
 app.MapGet("/", () => "Hello World!");
 app.MapGet("/fruit/all", () => Data.all);
-app.MapGet("/fruit/{id}", (int id) => Data.all[id]);
-app.MapPost("fruit/add/{id}", (Fruit fruit) => Command.AddElement(fruit));
-app.MapPatch("fruit/patch/{id}", (int id, Fruit fruit) => Command.PatchElement(id, fruit));
+app.MapGet("/fruit/{id}", (int id) => Command.GetElement(id));
+app.MapPost("fruit/add/{id}", (Chore fruit) => Command.AddElement(fruit));
+app.MapPatch("fruit/patch/{id}", (int id, Chore fruit) => Command.PatchElement(id, fruit));
 app.MapDelete("fruit/delete/{id}", (int id) => Command.RemoveElement(id));
+
 app.Run();
